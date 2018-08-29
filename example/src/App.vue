@@ -69,7 +69,6 @@ export default {
             transputIndex: endConnection.index,
           },
         );
-        console.log(edge);
       }
     },
     addNode() {
