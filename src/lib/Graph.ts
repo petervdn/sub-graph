@@ -1,16 +1,21 @@
-import EventDispatcher from 'seng-event';
 import Node from './Node';
+import Edge, { IConnection } from './Edge';
 
-export default class Graph extends EventDispatcher {
-  private nodes: Node[] = [];
+export default class Graph {
+  nodes: Node[] = [];
+  edges: Edge[] = [];
+}
 
-  constructor() {
-    super();
-  }
+export function addNode(graph: Graph, inputs: number, outputs: number): Node {
+  const node = new Node(`node-${graph.nodes.length}`, inputs, outputs);
+  graph.nodes.push(node);
 
-  public addNode(inputs: number, outputs: number): Node {
-    const node = new Node(inputs, outputs);
-    this.nodes.push(node);
-    return node;
-  }
+  return node;
+}
+
+export function addEdge(graph: Graph, source: IConnection, destination: IConnection): Edge {
+  const edge = new Edge(source, destination);
+  graph.edges.push(edge);
+
+  return edge;
 }
